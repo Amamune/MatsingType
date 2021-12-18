@@ -1,0 +1,1276 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+//package game;
+
+/**
+ *
+ * @author Dell
+ */
+import java.awt.Color;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
+public class Easy extends javax.swing.JFrame {
+    ArrayList<String> a1 = new ArrayList<>();
+    ArrayList<String> checking = new ArrayList<>();
+     ArrayList<String> a1rand = new ArrayList<>();
+
+    Random random = new Random(); 
+    private JButton c1;
+    private JButton c2;
+   
+    
+   int firstChoice=0;
+   int secondChoice=0;
+   int iterator =0;
+  
+   int counter;
+   private static boolean run = true;
+   
+   int sco=0;
+   final int ti = 150;
+     List<JButton> buttonList = new ArrayList<>();
+     List<JButton> buttonList2 = new ArrayList<>();
+      int buttonID[] = new int[8];
+      String checker[] = new String[8];
+    public Easy() {
+        initComponents();
+       
+        run=true;
+        a1.add("£");
+        a1.add("ƒ");
+        a1.add("ô");
+        a1.add("§");
+        a1.add("»");
+        a1.add("§");
+        a1.add("Ä");
+        a1.add("±");
+        for(int i=0;i<8;i++){
+               
+            checking.add(a1.get(i));
+           
+            
+        }
+        
+       
+        for(int i=0;i<8;i++){
+            
+            a1rand.add(a1.get(i));
+            
+        }
+        Collections.shuffle(a1rand);
+        
+      
+        buttonList.add(jfor1);
+        buttonList.add(jfor2);
+        buttonList.add(jfor3);
+        buttonList.add(jfor4);
+        buttonList.add(jfor5);
+        buttonList.add(jfor6);
+        buttonList.add(jfor7);
+        buttonList.add(jfor8);
+       
+        buttonList2.add(jforb1);
+        buttonList2.add(jforb2);
+        buttonList2.add(jforb3);
+        buttonList2.add(jforb4);
+        buttonList2.add(jforb5);
+        buttonList2.add(jforb6);
+        buttonList2.add(jforb7);
+        buttonList2.add(jforb8);
+       
+        
+        
+         // silip.setText(Integer.toString(sil));
+        Timer t = new Timer();
+         counter = 5;
+        TimerTask task = new TimerTask(){
+            public void run(){
+                if(run){
+                silip.setText(Integer.toString(counter));
+                counter--; 
+                for(int i=0;i<8;i++){
+
+                buttonList.get(i).setText((a1rand.get(i)));
+                buttonList.get(i).setEnabled(false);
+     
+                }
+
+                 for(int i=0;i<8;i++){
+
+                        buttonList2.get(i).setText((a1rand.get(i)));
+                        buttonList2.get(i).setEnabled(false);
+                    }
+                }
+                if(counter == -1){
+                    this.cancel();
+                    run = false;
+                     for(int i=0;i<8;i++){
+
+                    buttonList.get(i).setText((""));
+                    buttonList.get(i).setEnabled(true);
+
+                    }
+                     for(int i=0;i<8;i++){
+
+                            buttonList2.get(i).setText("");
+                            buttonList2.get(i).setEnabled(true);
+                    }
+                  boolean x=true;
+            long displayMinutes=1;
+            long starttime=60;
+            long timepassed=0;
+             long secondspassed=starttime-timepassed;
+            while(x)
+            {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+                
+               
+                if(displayMinutes>0&&secondspassed>59){
+                    displayMinutes--;
+                    secondspassed=59;
+                }
+                   
+                else if(secondspassed<60)
+                {
+                    
+                    secondspassed--;
+                    //starttime=System.currentTimeMillis();
+                }
+                
+                if(displayMinutes==0&&secondspassed==0||iterator==8){
+                    x=false;
+                    gameover r = new gameover();
+                    r.fin_score.setText(Integer.toString(sco));
+                    r.setVisible(true);
+                    exit();
+                }
+                
+                rem_time.setText(displayMinutes+":"+secondspassed);
+                     } catch (InterruptedException ex) {
+                Logger.getLogger(Easy.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                 }
+                }
+                System.out.println(counter);
+                
+            }
+
+            
+        };
+        t.scheduleAtFixedRate(task,1000,1000);
+          
+       
+        
+      
+      
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jfor1 = new javax.swing.JButton();
+        jfor5 = new javax.swing.JButton();
+        jfor4 = new javax.swing.JButton();
+        jfor2 = new javax.swing.JButton();
+        jforb1 = new javax.swing.JButton();
+        jforb5 = new javax.swing.JButton();
+        jforb4 = new javax.swing.JButton();
+        jfor6 = new javax.swing.JButton();
+        jfor8 = new javax.swing.JButton();
+        jfor7 = new javax.swing.JButton();
+        jforb8 = new javax.swing.JButton();
+        jforb3 = new javax.swing.JButton();
+        jfor3 = new javax.swing.JButton();
+        jforb2 = new javax.swing.JButton();
+        jforb6 = new javax.swing.JButton();
+        jforb7 = new javax.swing.JButton();
+        score = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        rem_time = new javax.swing.JLabel();
+        giveup = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        silip = new javax.swing.JLabel();
+        monkeyAng = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Matsing Type");
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setLocation(new java.awt.Point(230, 10));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jfor1.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jfor1.setForeground(new java.awt.Color(255, 204, 0));
+        jfor1.setBorderPainted(false);
+        jfor1.setContentAreaFilled(false);
+        jfor1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jfor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jfor1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jfor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 100, 100));
+
+        jfor5.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jfor5.setForeground(new java.awt.Color(255, 204, 0));
+        jfor5.setBorderPainted(false);
+        jfor5.setContentAreaFilled(false);
+        jfor5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jfor5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jfor5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jfor5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 100, 100));
+
+        jfor4.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jfor4.setForeground(new java.awt.Color(255, 204, 0));
+        jfor4.setBorderPainted(false);
+        jfor4.setContentAreaFilled(false);
+        jfor4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jfor4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jfor4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jfor4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 100, 110));
+
+        jfor2.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jfor2.setForeground(new java.awt.Color(255, 204, 0));
+        jfor2.setBorderPainted(false);
+        jfor2.setContentAreaFilled(false);
+        jfor2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jfor2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jfor2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jfor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, 100, 110));
+
+        jforb1.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jforb1.setForeground(new java.awt.Color(255, 204, 0));
+        jforb1.setBorderPainted(false);
+        jforb1.setContentAreaFilled(false);
+        jforb1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jforb1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jforb1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jforb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 100, 100));
+
+        jforb5.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jforb5.setForeground(new java.awt.Color(255, 204, 0));
+        jforb5.setBorderPainted(false);
+        jforb5.setContentAreaFilled(false);
+        jforb5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jforb5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jforb5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jforb5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 100, 100));
+
+        jforb4.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jforb4.setForeground(new java.awt.Color(255, 204, 0));
+        jforb4.setBorderPainted(false);
+        jforb4.setContentAreaFilled(false);
+        jforb4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jforb4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jforb4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jforb4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 100, 100));
+
+        jfor6.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jfor6.setForeground(new java.awt.Color(255, 204, 0));
+        jfor6.setBorderPainted(false);
+        jfor6.setContentAreaFilled(false);
+        jfor6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jfor6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jfor6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jfor6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 100, 100));
+
+        jfor8.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jfor8.setForeground(new java.awt.Color(255, 204, 0));
+        jfor8.setBorderPainted(false);
+        jfor8.setContentAreaFilled(false);
+        jfor8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jfor8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jfor8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jfor8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 100, 100));
+
+        jfor7.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jfor7.setForeground(new java.awt.Color(255, 204, 0));
+        jfor7.setBorderPainted(false);
+        jfor7.setContentAreaFilled(false);
+        jfor7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jfor7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jfor7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jfor7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 100, 90));
+
+        jforb8.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jforb8.setForeground(new java.awt.Color(255, 204, 0));
+        jforb8.setToolTipText("");
+        jforb8.setBorderPainted(false);
+        jforb8.setContentAreaFilled(false);
+        jforb8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jforb8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jforb8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jforb8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 100, 100));
+
+        jforb3.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jforb3.setForeground(new java.awt.Color(255, 204, 0));
+        jforb3.setBorderPainted(false);
+        jforb3.setContentAreaFilled(false);
+        jforb3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jforb3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jforb3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jforb3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 100, 100));
+
+        jfor3.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jfor3.setForeground(new java.awt.Color(255, 204, 0));
+        jfor3.setBorderPainted(false);
+        jfor3.setContentAreaFilled(false);
+        jfor3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jfor3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jfor3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jfor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 520, 100, 100));
+
+        jforb2.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jforb2.setForeground(new java.awt.Color(255, 204, 0));
+        jforb2.setBorderPainted(false);
+        jforb2.setContentAreaFilled(false);
+        jforb2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jforb2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jforb2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jforb2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, 100, 100));
+
+        jforb6.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jforb6.setForeground(new java.awt.Color(255, 204, 0));
+        jforb6.setBorderPainted(false);
+        jforb6.setContentAreaFilled(false);
+        jforb6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jforb6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jforb6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jforb6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, 100, 100));
+
+        jforb7.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 36)); // NOI18N
+        jforb7.setForeground(new java.awt.Color(255, 204, 0));
+        jforb7.setBorderPainted(false);
+        jforb7.setContentAreaFilled(false);
+        jforb7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jforb7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jforb7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jforb7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, 100, 100));
+
+        score.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        score.setForeground(new java.awt.Color(255, 255, 255));
+        score.setText("0");
+        getContentPane().add(score, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 40, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("POINTS:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("MATSING TYPE");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("TIME:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 60, 40));
+
+        rem_time.setFont(new java.awt.Font("Tahoma", 0, 33)); // NOI18N
+        rem_time.setForeground(new java.awt.Color(255, 255, 255));
+        rem_time.setText("0");
+        getContentPane().add(rem_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, -1, -1));
+
+        giveup.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        giveup.setForeground(new java.awt.Color(255, 255, 255));
+        giveup.setText("GIVE UP");
+        giveup.setBorderPainted(false);
+        giveup.setContentAreaFilled(false);
+        giveup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        giveup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                giveupActionPerformed(evt);
+            }
+        });
+        getContentPane().add(giveup, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 670, 140, 20));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel5.setText("Silip time:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+
+        silip.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        silip.setText("0");
+        getContentPane().add(silip, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, -1, -1));
+
+        monkeyAng.setIcon(new javax.swing.ImageIcon(getClass().getResource("/angry1.png"))); // NOI18N
+        getContentPane().add(monkeyAng, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, 270, 490));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel6.setToolTipText("");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel6MouseEntered(evt);
+            }
+        });
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 100, 110));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel7.setToolTipText("");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 100, 110));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel8.setToolTipText("");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 100, 110));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel9.setToolTipText("");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, 100, 110));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel14.setToolTipText("");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 100, 100));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel15.setToolTipText("");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 100, 100));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel16.setToolTipText("");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 100, 100));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel17.setToolTipText("");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 100, 100));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel18.setToolTipText("");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 100, 110));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel19.setToolTipText("");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 100, 110));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel20.setToolTipText("");
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, 100, 110));
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel21.setToolTipText("");
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 100, 110));
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel22.setToolTipText("");
+        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 520, 100, 100));
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel23.setToolTipText("");
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, 100, 100));
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel24.setToolTipText("");
+        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, 100, 100));
+
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tiles.PNG"))); // NOI18N
+        jLabel25.setToolTipText("");
+        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, 100, 100));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/button33.png"))); // NOI18N
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 660, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/title5.png"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 380, 80));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/button1.png"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/button2.png"))); // NOI18N
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, -1, 70));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 720));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+    private void exit(){
+        this.dispose();
+    }
+    private void jforb5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jforb5ActionPerformed
+        jforb5.setText(a1rand.get(4));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jforb5.setEnabled(false);
+            c1=jforb5;
+        }
+        else if(firstChoice==1){
+             c2=jforb5;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+            
+          
+            
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+            
+             }
+             
+             else if(c1.getText() == null ? c2.getText() == null : !c1.getText().equals(c2.getText())){
+                    Collections.shuffle(a1rand);
+               
+
+               
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+    }//GEN-LAST:event_jforb5ActionPerformed
+
+    private void jfor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfor1ActionPerformed
+       
+       jfor1.setText(a1rand.get(0));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jfor1.setEnabled(false);
+            c1=jfor1;
+        }
+        else if(firstChoice==1){
+             c2=jfor1;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+          
+           
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+             }
+             
+             else if(c1.getText() == null ? c2.getText() == null : !c1.getText().equals(c2.getText())){
+                Collections.shuffle(a1rand);
+                
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+        
+    }//GEN-LAST:event_jfor1ActionPerformed
+
+    private void giveupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_giveupActionPerformed
+       gameover r = new gameover();
+       r.fin_score.setText(Integer.toString(sco));
+       this.dispose();
+       r.setVisible(true);
+    }//GEN-LAST:event_giveupActionPerformed
+
+    private void jfor5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfor5ActionPerformed
+        jfor5.setText(a1rand.get(4));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jfor5.setEnabled(false);
+            c1=jfor5;
+        }
+        else if(firstChoice==1){
+             c2=jforb5;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+           
+        
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+            
+             }
+             
+             else if(c1.getText() == null ? c2.getText() == null : !c1.getText().equals(c2.getText())){
+                    Collections.shuffle(a1rand);
+               
+
+               
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+    }//GEN-LAST:event_jfor5ActionPerformed
+
+    private void jforb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jforb1ActionPerformed
+       jforb1.setText(a1rand.get(0));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jforb1.setEnabled(false);
+            c1=jforb1;
+        }
+        else if(firstChoice==1){
+             c2=jforb1;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+           
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+             }
+             
+             else if(c1.getText() == null ? c2.getText() == null : !c1.getText().equals(c2.getText())){
+                    Collections.shuffle(a1rand);
+                
+               
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+        
+    }//GEN-LAST:event_jforb1ActionPerformed
+
+    private void jfor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfor4ActionPerformed
+        jfor4.setText(a1rand.get(3));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jfor4.setEnabled(false);
+            c1=jfor4;
+        }
+        else if(firstChoice==1){
+             c2=jfor4;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+          
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+             }
+             
+             else{
+                    Collections.shuffle(a1rand);
+               
+               
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+    }//GEN-LAST:event_jfor4ActionPerformed
+
+    private void jforb4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jforb4ActionPerformed
+        jforb4.setText(a1rand.get(3));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jforb4.setEnabled(false);
+            c1=jforb4;
+        }
+        else if(firstChoice==1){
+             c2=jforb4;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+           
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+             }
+             
+             else{
+                    Collections.shuffle(a1rand);
+                
+               
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+    }//GEN-LAST:event_jforb4ActionPerformed
+
+    private void jfor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfor2ActionPerformed
+         jfor2.setText(a1rand.get(1));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jfor2.setEnabled(false);
+            c1=jfor2;
+        }
+        else if(firstChoice==1){
+             c2=jfor2;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+           
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+             }
+             
+             else{
+                    Collections.shuffle(a1rand);
+              
+               
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+    }//GEN-LAST:event_jfor2ActionPerformed
+
+    private void jforb2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jforb2ActionPerformed
+         jforb2.setText(a1rand.get(1));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jforb2.setEnabled(false);
+            c1=jforb2;
+        }
+        else if(firstChoice==1){
+             c2=jforb2;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+           
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+             }
+             
+             else{
+                    Collections.shuffle(a1rand);
+                
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+    }//GEN-LAST:event_jforb2ActionPerformed
+
+    private void jfor6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfor6ActionPerformed
+        jfor6.setText(a1rand.get(5));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jfor6.setEnabled(false);
+            c1=jfor6;
+        }
+        else if(firstChoice==1){
+             c2=jfor6;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+            
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+             }
+             
+             else{
+                    Collections.shuffle(a1rand);
+              
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+    }//GEN-LAST:event_jfor6ActionPerformed
+
+    private void jforb6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jforb6ActionPerformed
+         jforb6.setText(a1rand.get(5));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jforb6.setEnabled(false);
+            c1=jforb6;
+        }
+        else if(firstChoice==1){
+             c2=jforb6;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+            
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+             }
+             
+             else{
+                    Collections.shuffle(a1rand);
+               
+               
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+    }//GEN-LAST:event_jforb6ActionPerformed
+
+    private void jfor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfor3ActionPerformed
+        jfor3.setText(a1rand.get(2));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jfor3.setEnabled(false);
+            c1=jfor3;
+        }
+        else if(firstChoice==1){
+             c2=jfor3;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+          
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+             }
+             
+             else{
+                    Collections.shuffle(a1rand);
+                
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+    }//GEN-LAST:event_jfor3ActionPerformed
+
+    private void jforb3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jforb3ActionPerformed
+        jforb3.setText(a1rand.get(2));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jforb3.setEnabled(false);
+            c1=jforb3;
+        }
+        else if(firstChoice==1){
+             c2=jforb3;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+           
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+             }
+             
+             else{
+                    Collections.shuffle(a1rand);
+               
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+    }//GEN-LAST:event_jforb3ActionPerformed
+
+    private void jforb7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jforb7ActionPerformed
+        jforb7.setText(a1rand.get(6));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jforb7.setEnabled(false);
+            c1=jforb7;
+        }
+        else if(firstChoice==1){
+             c2=jforb7;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+            
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+             }
+             
+             else{
+                    Collections.shuffle(a1rand);
+                
+              
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+    }//GEN-LAST:event_jforb7ActionPerformed
+
+    private void jfor7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfor7ActionPerformed
+        jfor7.setText(a1rand.get(6));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jfor7.setEnabled(false);
+            c1=jfor7;
+        }
+        else if(firstChoice==1){
+             c2=jfor7;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+          
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+             }
+             
+             else{
+                    Collections.shuffle(a1rand);
+                
+               
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+    }//GEN-LAST:event_jfor7ActionPerformed
+
+    private void jfor8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfor8ActionPerformed
+        jfor8.setText(a1rand.get(7));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jfor8.setEnabled(false);
+            c1=jfor8;
+        }
+        else if(firstChoice==1){
+             c2=jfor8;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+            
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+             }
+             
+             else{
+                    Collections.shuffle(a1rand);
+                
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+    }//GEN-LAST:event_jfor8ActionPerformed
+
+    private void jforb8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jforb8ActionPerformed
+         jforb8.setText(a1rand.get(7));
+       
+        if (firstChoice==0){
+            firstChoice=1;
+            jforb8.setEnabled(false);
+            c1=jforb8;
+        }
+        else if(firstChoice==1){
+             c2=jforb8;
+             if(c1.getText() == null ? c2.getText() == null : c1.getText().equals(c2.getText())){
+            c1.setEnabled(false); //disables the button
+            c2.setEnabled(false);
+            c1.setForeground(Color.red);
+            c2.setForeground(Color.red);
+           
+            iterator++;
+            sco += 200;
+            score.setText(Integer.toString(sco));
+            c1=null;
+            c2=null;
+             }
+             
+             else{
+                    Collections.shuffle(a1rand);
+               
+               
+                c1.setText("");
+                c2.setText("");
+                c2.setEnabled(true);
+                c1.setEnabled(true);
+                c2=null;
+                c1=null;
+             }
+             firstChoice=0; 
+        }
+    }//GEN-LAST:event_jforb8ActionPerformed
+
+    private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
+       
+    }//GEN-LAST:event_jLabel6MouseEntered
+
+    /**
+     * @param args the command line arguments+
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Easy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Easy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Easy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Easy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Easy().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton giveup;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton jfor1;
+    private javax.swing.JButton jfor2;
+    private javax.swing.JButton jfor3;
+    private javax.swing.JButton jfor4;
+    private javax.swing.JButton jfor5;
+    private javax.swing.JButton jfor6;
+    private javax.swing.JButton jfor7;
+    private javax.swing.JButton jfor8;
+    private javax.swing.JButton jforb1;
+    private javax.swing.JButton jforb2;
+    private javax.swing.JButton jforb3;
+    private javax.swing.JButton jforb4;
+    private javax.swing.JButton jforb5;
+    private javax.swing.JButton jforb6;
+    private javax.swing.JButton jforb7;
+    private javax.swing.JButton jforb8;
+    private javax.swing.JLabel monkeyAng;
+    public javax.swing.JLabel rem_time;
+    private javax.swing.JLabel score;
+    private javax.swing.JLabel silip;
+    // End of variables declaration//GEN-END:variables
+}
